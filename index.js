@@ -9,7 +9,7 @@ inputBtn.addEventListener("click", function () {
   console.log(myLeads);
 });
 
-// Log out the items in the myLeads array using a for loop
+// Rendered list using textContent
 for (let i = 0; i < myLeads.length; i++) {
-  console.log(myLeads[i]);
+  ulEl.textContent += myLeads[i] + " ";
 }
