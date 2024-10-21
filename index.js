@@ -13,6 +13,9 @@ inputBtn.addEventListener("click", function () {
 
   // To verify that it works:
   console.log(localStorage.getItem("leadsFromLocalStorage"));
+
+  // To verify that it works:
+  console.log(localStorage.getItem("leadsFromLocalStorage"));
 });
 
 function renderLeads() {
