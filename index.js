@@ -11,13 +11,13 @@ if (leadsFromLocalStorage) {
   render(myLeads);
 }
 
-const tabs = [{ url: "https://www.linkedin.com/in/akankshapatil2015/" }];
-
 tabBtn.addEventListener("click", function () {
-  // Save the url instead of logging it out
-  myLeads.push(tabs[0].url);
-  localStorage.setItem("myLeads", JSON.stringify(myLeads));
-  render(myLeads);
+  // Grab the URL of the current tab using chrome API and remove above hardcoded tabs URL
+   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+     myLeads.push(tabs[0].url);
+     localStorage.setItem("myLeads", JSON.stringify(myLeads));
+     render(myLeads);
+   });
 });
 
 function render(leads) {
