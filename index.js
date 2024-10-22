@@ -2,26 +2,26 @@ let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");
-// 1. Store the delete button in a deleteBtn variable
 const deleteBtn = document.getElementById("delete-btn");
-
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-// 2. Listen for double clicks on the delete button
-// 3. When clicked, clear localStorage, myLeads, and the DOM
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
   renderLeads(myLeads);
 }
 
-function renderLeads(leads) {
+// Refector the function so that it takes a parameter, leads, that it uses
+// instead of the global myLeads variable. Remember to update all invocations 
+// of the function as well.
+
+function render(leads) {
   let listItems = "";
-  for (let i = 0; i < myLeads.length; i++) {
+  for (let i = 0; i < leads.length; i++) {
     listItems += `
             <li>
-                <a target='_blank' href='${myLeads[i]}'>
-                    ${myLeads[i]}
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
                 </a>
             </li>
         `;
@@ -32,12 +32,12 @@ function renderLeads(leads) {
 deleteBtn.addEventListener("dblclick", function () {
   localStorage.clear();
   myLeads = [];
-  renderLeads();
+  render(myLeads);
 });
 
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   inputEl.value = "";
   localStorage.setItem("myLeads", JSON.stringify(myLeads));
-  renderLeads();
+  render(myLeads);
 });
