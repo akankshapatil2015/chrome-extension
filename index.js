@@ -14,7 +14,10 @@ if (leadsFromLocalStorage) {
 const tabs = [{ url: "https://www.linkedin.com/in/akankshapatil2015/" }];
 
 tabBtn.addEventListener("click", function () {
-   console.log(tabs[0].url);
+  // Save the url instead of logging it out
+  myLeads.push(tabs[0].url);
+  localStorage.setItem("myLeads", JSON.stringify(myLeads));
+  render(myLeads);
 });
 
 function render(leads) {
