@@ -12,11 +12,13 @@ if (leadsFromLocalStorage) {
 }
 
 tabBtn.addEventListener("click", function () {
-  // Grab the URL of the current tab using chrome API and remove above hardcoded tabs URL
    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-     myLeads.push(tabs[0].url);
-     localStorage.setItem("myLeads", JSON.stringify(myLeads));
-     render(myLeads);
+     // Check if the URL already exists in the array
+    if (!myLeads.includes(url)) {
+      myLeads.push(url);
+      localStorage.setItem("myLeads", JSON.stringify(myLeads));
+      render(myLeads);
+    }
    });
 });
 
