@@ -4,16 +4,18 @@ const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");
 const deleteBtn = document.getElementById("delete-btn");
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
-
+const tabBtn = document.getElementById("tab-btn");
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
-  renderLeads(myLeads);
+  render(myLeads);
 }
 
-// Refector the function so that it takes a parameter, leads, that it uses
-// instead of the global myLeads variable. Remember to update all invocations 
-// of the function as well.
+const tabs = [{ url: "https://www.linkedin.com/in/akankshapatil2015/" }];
+
+tabBtn.addEventListener("click", function () {
+   console.log(tabs[0].url);
+});
 
 function render(leads) {
   let listItems = "";
