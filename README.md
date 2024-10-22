@@ -1,4 +1,4 @@
-**My Leads Chrome Extension**
+**My Reads Chrome Extension**
 
 A simple Chrome extension that allows users to store and manage URLs.This extension captures the current tab's URL and stores it in local storage.
 Users can also manually enter URLs and delete all saved URLs with a double-click.
